@@ -53,7 +53,6 @@
       <app-event-list
         [events]="selectedDayEvents()"
         (edit)="handleEditEvent($event)"
-        (delete)="handleDeleteEvent($event)"
       />
     } @else {
       <div class="no-day-selected">
