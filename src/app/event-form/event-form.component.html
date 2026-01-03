@@ -1,0 +1,12 @@
+<form [formGroup]="eventForm" (ngSubmit)="save()">
+  <h2 mat-dialog-title>Evento</h2>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput formControlName="title" placeholder="Título del evento">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button type="button" (click)="cancel()">Cancelar</button>
+    <button mat-button type="submit" [disabled]="!eventForm.valid">Guardar</button>
+  </div>
+</form>

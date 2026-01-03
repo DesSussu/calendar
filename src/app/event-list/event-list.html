@@ -1,0 +1,22 @@
+@if (events().length > 0) {
+  <mat-list>
+    @for (event of events(); track event.id) {
+      <mat-list-item>
+        <h3 mat-line>{{ event.title }}</h3>
+        <div mat-line class="event-actions">
+          <button mat-icon-button (click)="edit.emit(event)" aria-label="Editar evento">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete.emit(event)" aria-label="Eliminar evento">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    }
+  </mat-list>
+} @else {
+  <div class="no-events">
+    <mat-icon>event_busy</mat-icon>
+    <p>No hay eventos para este día.</p>
+  </div>
+}
