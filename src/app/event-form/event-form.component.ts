@@ -31,7 +31,10 @@ export class EventFormComponent {
 
   public save(): void {
     if (this.eventForm.valid) {
-        this.dialogRef.close({ title: this.eventForm.value.title });
+        this.dialogRef.close({ 
+          title: this.eventForm.value.title,
+          date: this.data.date
+        });
     }
   }
 

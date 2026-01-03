@@ -1,5 +1,5 @@
 
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -49,9 +49,22 @@ interface Day {
                         class="day" 
                         [class.selected]="isDaySelected(day)"
                         (click)="selectDay(day)">
-                        {{ day.dayOfMonth }}
+                        <span class="day-number">{{ day.dayOfMonth }}</span>
                         @if (day.events.length > 0) {
-                          <div class="event-indicator"></div>
+                          <div class="day-events">
+                            @for (event of day.events; track event.id) {
+                              <div class="day-event">
+                                <span class="event-title">{{ event.title }}</span>
+                                <button 
+                                  mat-icon-button 
+                                  class="delete-btn"
+                                  (click)="handleDeleteEvent(event); $event.stopPropagation()"
+                                  aria-label="Eliminar evento">
+                                  <mat-icon>close</mat-icon>
+                                </button>
+                              </div>
+                            }
+                          </div>
                         }
                       </div>
                   }
@@ -99,7 +112,7 @@ export class CalendarComponent {
   
   public selectedDayEvents = computed(() => {
     const day = this.selectedDay();
-    const allEvents = this.eventsService.getEvents()();
+    const allEvents = this.eventsService.events();
     if (!day) return [];
     const selectedDate = new Date(day.year, day.month, day.dayOfMonth);
     return allEvents.filter(e => new Date(e.date).toDateString() === selectedDate.toDateString());
@@ -107,8 +120,9 @@ export class CalendarComponent {
 
   constructor() {
     this.generateCalendar();
-    this.eventsService.events$.subscribe(() => {
-        this.generateCalendar();
+    effect(() => {
+      this.eventsService.events();
+      this.generateCalendar();
     });
   }
 
@@ -175,7 +189,7 @@ export class CalendarComponent {
       'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
     ];
-    const allEvents = this.eventsService.getEvents()();
+    const allEvents = this.eventsService.events();
 
     this.months = monthNames.map((name, index) => {
       const monthIndex = index;
