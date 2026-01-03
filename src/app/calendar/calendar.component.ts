@@ -27,71 +27,7 @@ interface Day {
     MatIconModule
   ],
   styleUrl: './calendar.scss',
-  template: `
-    <div class="main-view">
-      <div class="calendar-container">
-        <div class="header">
-          <button mat-icon-button (click)="changeYear(-1)" aria-label="Año anterior">
-            <mat-icon>chevron_left</mat-icon>
-          </button>
-          <h2>{{ year() }}</h2>
-          <button mat-icon-button (click)="changeYear(1)" aria-label="Año siguiente">
-            <mat-icon>chevron_right</mat-icon>
-          </button>
-        </div>
-        <div class="calendar-grid">
-          @for (month of months; track month.name) {
-            <div class="month">
-              <h3>{{ month.name }}</h3>
-              <div class="days-grid">
-                  @for (day of month.days; track day.dayOfMonth) {
-                      <div 
-                        class="day" 
-                        [class.selected]="isDaySelected(day)"
-                        (click)="selectDay(day)">
-                        <span class="day-number">{{ day.dayOfMonth }}</span>
-                        @if (day.events.length > 0) {
-                          <div class="day-events">
-                            @for (event of day.events; track event.id) {
-                              <div class="day-event">
-                                <span class="event-title">{{ event.title }}</span>
-                                <button 
-                                  mat-icon-button 
-                                  class="delete-btn"
-                                  (click)="handleDeleteEvent(event); $event.stopPropagation()"
-                                  aria-label="Eliminar evento">
-                                  <mat-icon>close</mat-icon>
-                                </button>
-                              </div>
-                            }
-                          </div>
-                        }
-                      </div>
-                  }
-              </div>
-            </div>
-          }
-        </div>
-      </div>
-      <div class="event-list-container" [@fadeInOut]>
-        @if (selectedDay(); as day) {
-          <h3>Eventos para el {{ day.dayOfMonth }}/{{ day.month + 1 }}/{{ day.year }}</h3>
-          <button mat-fab color="primary" (click)="addEvent()" aria-label="Añadir evento">
-            <mat-icon>add</mat-icon>
-          </button>
-          <app-event-list
-            [events]="selectedDayEvents()"
-            (edit)="handleEditEvent($event)"
-            (delete)="handleDeleteEvent($event)"
-          />
-        } @else {
-          <div class="no-day-selected">
-            <p>Selecciona un día para ver los eventos.</p>
-          </div>
-        }
-      </div>
-    </div>
-  `,
+  templateUrl: './calendar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('fadeInOut', [
