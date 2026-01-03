@@ -3,7 +3,7 @@
 
 ## Visión General
 
-Una aplicación de calendario de eventos interactiva y persistente. La aplicación permite a los usuarios añadir, ver, editar y eliminar eventos en un calendario anual. El diseño es moderno, limpio y totalmente responsivo. Los eventos se guardan en el `localStorage` del navegador, por lo que persisten entre sesiones.
+Una aplicación de calendario de eventos interactiva y colaborativa. La aplicación permite a los usuarios añadir, ver, editar y eliminar eventos en un calendario anual. El diseño es moderno, limpio y totalmente responsivo. Los eventos se guardan en **Firebase Realtime Database**, lo que permite la sincronización en tiempo real entre todos los dispositivos.
 
 ## Diseño y Estilo
 
@@ -53,11 +53,13 @@ Una aplicación de calendario de eventos interactiva y persistente. La aplicaci�
     1.  **Tematización:** Se creó un fichero `theme.scss` con variables para la paleta de colores, tipografía y sombras.
     2.  **Estilos de componentes:** Se aplicaron los estilos del tema a todos los componentes de la aplicación.
 
-### Fase 5: Persistencia de Datos y Modo Offline
+### Fase 5: Persistencia de Datos en la Nube con Firebase
 
-*   **Objetivo:** Guardar los eventos del usuario para que persistan entre sesiones.
+*   **Objetivo:** Migrar la persistencia de datos de `localStorage` a Firebase Realtime Database para permitir la sincronización en tiempo real entre dispositivos.
 *   **Pasos:**
-    1.  **`localStorage`:** Se modificó el `EventsService` para guardar y cargar eventos desde el `localStorage` del navegador.
+    1.  **Instalación de dependencias:** Se instalaron los paquetes `firebase` y `@angular/fire`.
+    2.  **Configuración de Firebase:** Se creó un archivo de entorno con la configuración del proyecto de Firebase y se inicializó la aplicación de Firebase en `app.config.ts`.
+    3.  **Refactorización del `EventsService`:** Se reescribió el servicio para interactuar con Firebase Realtime Database en lugar de `localStorage`, utilizando las APIs de `@angular/fire` para las operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
 
 ### Fase 6: Toques Finales y Despliegue
 
