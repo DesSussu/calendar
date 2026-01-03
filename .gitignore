@@ -19,6 +19,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+.idx/
 
 # Visual Studio Code
 .vscode/*
@@ -37,6 +38,12 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+
+# Environment files with sensitive data
+/src/environments/environment.ts
+/src/environments/environment.prod.ts
+*.env
+*.env.local
 
 # System files
 .DS_Store

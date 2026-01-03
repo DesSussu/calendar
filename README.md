@@ -1,6 +1,31 @@
-# Myapp
+# Calendar App
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+
+## Setup
+
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure Firebase
+
+This application uses Firebase for data storage. You need to set up your Firebase credentials:
+
+1. Copy the template file:
+   ```bash
+   cp src/environments/environment.template.ts src/environments/environment.ts
+   ```
+
+2. Go to [Firebase Console](https://console.firebase.google.com/)
+3. Create a new project or select an existing one
+4. Go to Project Settings > Your apps > Add app > Web
+5. Copy your Firebase configuration
+6. Open `src/environments/environment.ts` and replace the placeholder values with your actual Firebase credentials
+
+**Important:** Never commit `environment.ts` to version control. This file is already in `.gitignore`.
 
 ## Development server
 
