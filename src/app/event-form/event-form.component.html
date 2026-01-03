@@ -4,6 +4,33 @@
     <mat-form-field>
       <input matInput formControlName="title" placeholder="Título del evento">
     </mat-form-field>
+    
+    <div class="file-upload-section">
+      <label class="file-label">Adjuntar documentos</label>
+      <input 
+        type="file" 
+        #fileInput
+        (change)="onFileSelected($event)" 
+        multiple
+        style="display: none">
+      <button mat-raised-button type="button" (click)="fileInput.click()">
+        <mat-icon>attach_file</mat-icon>
+        Seleccionar archivos
+      </button>
+      
+      @if (selectedFiles().length > 0) {
+        <div class="selected-files">
+          @for (file of selectedFiles(); track $index) {
+            <div class="file-chip">
+              <span>{{ file.name }}</span>
+              <button mat-icon-button type="button" (click)="removeFile($index)">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          }
+        </div>
+      }
+    </div>
   </div>
   <div mat-dialog-actions>
     <button mat-button type="button" (click)="cancel()">Cancelar</button>

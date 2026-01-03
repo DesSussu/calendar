@@ -1,3 +1,51 @@
 mat-form-field {
   width: 100%;
 }
+
+.file-upload-section {
+  margin-top: 1rem;
+}
+
+.file-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.selected-files {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.file-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #e0e0e0;
+  border-radius: 16px;
+  font-size: 0.875rem;
+
+  span {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  button {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+    }
+  }
+}

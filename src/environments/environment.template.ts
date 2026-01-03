@@ -9,5 +9,9 @@ export const environment = {
     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
     appId: "YOUR_APP_ID",
     measurementId: "YOUR_MEASUREMENT_ID"
+  },
+  supabase: {
+    url: "YOUR_SUPABASE_URL",
+    anonKey: "YOUR_SUPABASE_ANON_KEY"
   }
 };

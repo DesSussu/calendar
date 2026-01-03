@@ -3,6 +3,16 @@
     @for (event of events(); track event.id) {
       <mat-list-item>
         <h3 mat-line>{{ event.title }}</h3>
+        @if (event.documents && event.documents.length > 0) {
+          <div mat-line class="documents">
+            @for (doc of event.documents; track doc.url) {
+              <a [href]="doc.url" target="_blank" class="document-link">
+                <mat-icon>attach_file</mat-icon>
+                {{ doc.name }}
+              </a>
+            }
+          </div>
+        }
         <div mat-line class="event-actions">
           <button mat-icon-button (click)="edit.emit(event)" aria-label="Editar evento">
             <mat-icon>edit</mat-icon>
