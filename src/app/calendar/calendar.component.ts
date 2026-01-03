@@ -26,7 +26,7 @@ interface Day {
     MatButtonModule, 
     MatIconModule
   ],
-  styleUrl: './calendar.css',
+  styleUrl: './calendar.scss',
   template: `
     <div class="main-view">
       <div class="calendar-container">
