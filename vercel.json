@@ -1,19 +1,8 @@
 {
   "version": 2,
   "name": "calendar-app",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/myapp"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "npm run build:prod",
+  "outputDirectory": "dist/myapp",
+  "framework": "angular"
 }
