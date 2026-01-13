@@ -4,5 +4,8 @@
   "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build:prod",
   "outputDirectory": "dist/myapp",
-  "framework": "angular"
+  "framework": "angular",
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
