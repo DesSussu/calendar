@@ -3,7 +3,7 @@
   "name": "calendar-app",
   "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build:prod",
-  "outputDirectory": "dist/myapp",
+  "outputDirectory": "dist/myapp/browser",
   "framework": "angular",
   "routes": [
     { "src": "/(.*)", "dest": "/index.html" }
